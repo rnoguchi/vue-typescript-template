@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  web:
+    build: ./centos7
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    volumes:
+      - ../vue-typescript-template:/var/www/vue-typescript-template
+    restart: always
+    command: > 
+      bash -c "
+        cd /var/www/vue-typescript-template;
+        npm install;
+        tail -f /dev/null;
+        "
